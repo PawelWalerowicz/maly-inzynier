@@ -46,7 +46,7 @@ class ReinforcementTest {
         Assertions.assertEquals(5.66, testAnswer[1]);
     }
 
-
+/*
     @Test
     void calculateDoubleReinforcementRectangle_incorrect_param_1() {
         //given
@@ -66,7 +66,7 @@ class ReinforcementTest {
         Assertions.assertEquals(27.23, testAnswer[0]);
         Assertions.assertEquals(5.66, testAnswer[1]);
     }
-
+*/
 
     @Test
     void calculateKsiEffLim_Correct_0493() {
