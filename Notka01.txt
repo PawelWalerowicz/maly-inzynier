@@ -1,0 +1,130 @@
+
+    private static void GUIConcreteWindow {
+
+    String ConcreteClasses[] = {"C12/15","C16/20","C20/25","C25/30","C30/37","C35/45","C40/50","C45/55","C50/60"};
+
+        //Container
+        JFrame frame = new JFrame("Mały inżynier");
+        //Exit on close
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        //Layout manager
+        SpringLayout layout = new SpringLayout();
+        frame.setLayout(layout);
+        frame.getContentPane().setBackground(BackgroundColor);
+
+        //Initial window size
+        frame.setSize(500, 500);
+        frame.setResizable(false);
+
+        //Concrete class list
+        JList<String> ClassList = new JList<String>(ConcreteClasses);
+        ClassList.setSelectedIndex(3); //Default concrete C25/30
+        ClassList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION); //only one class can be chosen
+        ClassList.setPreferredSize(new Dimension(45,165));
+        ClassList.setBackground(Color.white);
+
+        //Dodaje obiekt nasłuchjący zdarzeń
+        //ClassList.addListSelectionListener(this);
+
+        //Header of concrete class list
+        JLabel ConcreteClassLabel = new JLabel("Klasa betonu:");
+
+        //Frame for exposition class XC
+        JPanel ExpositionXCFrame = new JPanel(new BorderLayout());
+        ExpositionXCFrame.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.gray),"Klasa XC:"));
+        ExpositionXCFrame.setBackground(BackgroundColor);
+        ExpositionXCFrame.setLayout(new FlowLayout());
+        ExpositionXCFrame.setPreferredSize(new Dimension(80,150));
+
+        //XC Exposition buttons group
+        ButtonGroup XCGroup = new ButtonGroup();
+
+        //XC Exposition buttons
+        JRadioButton XC1Button = new JRadioButton("XC1");
+        JRadioButton XC2Button = new JRadioButton("XC2");
+        JRadioButton XC3Button = new JRadioButton("XC3");
+        JRadioButton XC4Button = new JRadioButton("XC4");
+        XCGroup.add(XC1Button);
+        XCGroup.add(XC2Button);
+        XCGroup.add(XC3Button);
+        XCGroup.add(XC4Button);
+       // XC1Button.addItemListener(this);
+        //XC2Button.addItemListener(this);
+        //XC3Button.addItemListener(this);
+        //XC4Button.addItemListener(this);
+
+
+                //Robocza etykietka do odczytu danych
+        JLabel OdczytRoboczy = new JLabel("Cipencje");
+
+
+
+
+
+        //Setting location of elements in Container
+
+        //ConcreteClassLabel 5 pix gap below the frame
+        layout.putConstraint(
+                SpringLayout.NORTH,ConcreteClassLabel,
+                5,
+                SpringLayout.NORTH, frame);
+
+        //ConcreteClassLabel 10 pix gap left of the frame
+        layout.putConstraint(
+                SpringLayout.WEST,ConcreteClassLabel,
+                10,
+                SpringLayout.WEST, frame);
+
+        //ClassList North Edge 5 pix gap south of the ConcreteClassLabel
+        layout.putConstraint(
+                SpringLayout.NORTH,ClassList,
+                5,
+                SpringLayout.SOUTH, ConcreteClassLabel);
+
+        //ClassList 10 pix gap left of the frame
+        layout.putConstraint(
+                SpringLayout.WEST,ClassList,
+                10,
+                SpringLayout.WEST, frame);
+
+        //ExpositionCFrame North Edge 5 pix gap below the frame
+        layout.putConstraint(
+                SpringLayout.NORTH,ExpositionXCFrame,
+                5,
+                SpringLayout.SOUTH, ConcreteClassLabel);
+
+        //ExpositionCFrame North Edge 10 pix gap left of ClassList
+        layout.putConstraint(
+                SpringLayout.WEST,ExpositionXCFrame,
+                10,
+                SpringLayout.EAST, ClassList);
+
+
+
+
+
+        //Odczyt roboczy ponizej listy
+        layout.putConstraint(
+                SpringLayout.NORTH,OdczytRoboczy,
+                50,
+                SpringLayout.SOUTH, ExpositionXCFrame);
+
+        //Odczyt roboczy od ramki
+        layout.putConstraint(
+                SpringLayout.WEST,OdczytRoboczy,
+                10,
+                SpringLayout.WEST, frame);
+
+
+
+
+        //Adding elements to the Container
+        frame.add(ConcreteClassLabel);
+        frame.add(ClassList);
+        frame.add(ExpositionXCFrame);
+
+        ExpositionXCFrame.add(XC1Button);
+        ExpositionXCFrame.add(XC2Button);
+        ExpositionXCFrame.add(XC3Button);
+        ExpositionXCFrame.add(XC4Button);
